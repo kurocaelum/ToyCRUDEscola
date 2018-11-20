@@ -16,11 +16,20 @@ public class AlunoTest {
 	@After
 	public void tearDown() throws Exception {
 	}
+	
+	@Test
+	public void testAssertTrue() {
+		assert(true);
+	}
 
 	@Test
-	public void testGetTelefone() {
-//		assertEquals(true, true);
-		fail("Not implemented yet");
+	public void testAssertFalse() {
+		assert(false);
+	}
+
+	@Test
+	public void testFailOnPurpose() {
+		fail("Intentional failure."); // A failure different from "assert(false)"
 	}
 
 }
