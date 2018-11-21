@@ -23,6 +23,9 @@ jobs:
     steps:
       - checkout
 
+      # TODO Remove after solving dependencies
+      - run: mvn clean install -U
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -36,9 +39,6 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-        
-      # TODO Remove after solving dependencies
-      - run: mvn clean install -U
       
       # TODO
       - run: mvn package
