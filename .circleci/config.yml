@@ -25,7 +25,8 @@ jobs:
             - ~/.m2
           key: toy-crud-escola-{{ checksum "pom.xml" }}
 
-      - run: mvn test
+      - run: mvn clean compile package
+      # - run: mvn test
       # - run: mvn package
 
       - store_test_results:
