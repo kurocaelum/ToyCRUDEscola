@@ -3,45 +3,32 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
+
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk-browsers
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
-
-    environment:
-      # Customize the JVM maximum heap limit
-      MAVEN_OPTS: -Xmx3200m
+    working_directory: ~/toy-crud-escola
     
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+
     steps:
+    
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      
-      - run: mvn dependency:go-offline
+          key: toy-crud-escola-{{ checksum "pom.xml" }}
+
+      - run: mvn depedency:go-offline
 
       - save_cache:
-          paths:
+          paths: 
             - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
-      
-      # TODO Remove after solving dependencies
-      - run: mvn clean install -U
+          key: toy-crud-escola-{{ checksum "pom.xml" }}
 
-      # TODO
       - run: mvn package
-      
-          # run tests!
-      # - run: mvn integration-test
+
+      - store_test_results:
+        path: target/surefire-reports
+
+      - store_artifacts:
+        path: target/toy-crud-escola-0.0.1-SNAPSHOT.jar
