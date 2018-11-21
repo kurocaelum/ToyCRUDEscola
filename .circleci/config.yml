@@ -18,7 +18,7 @@ jobs:
       - restore_cache:
           key: toy-crud-escola-{{ checksum "pom.xml" }}
 
-      - run: mvn depedency:go-offline
+      - run: mvn dependency:go-offline
 
       - save_cache:
           paths: 
