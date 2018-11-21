@@ -28,7 +28,7 @@ jobs:
       - run: mvn package
 
       - store_test_results:
-        path: target/surefire-reports
+          path: target/surefire-reports
 
       - store_artifacts:
-        path: target/toy-crud-escola-0.0.1-SNAPSHOT.jar
+          path: target/toy-crud-escola-0.0.1-SNAPSHOT.jar
