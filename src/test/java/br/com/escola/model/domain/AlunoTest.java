@@ -22,14 +22,14 @@ public class AlunoTest {
 		assert(true);
 	}
 
-	@Test
-	public void testAssertFalse() {
-		assert(false);
-	}
+// 	@Test
+// 	public void testAssertFalse() {
+// 		assert(false);
+// 	}
 
-	@Test
-	public void testFailOnPurpose() {
-		fail("Intentional failure."); // A failure different from "assert(false)"
-	}
+// 	@Test
+// 	public void testFailOnPurpose() {
+// 		fail("Intentional failure."); // A failure different from "assert(false)"
+// 	}
 
-}
+// }
