@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk:8-jdk-browsers
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -23,9 +23,6 @@ jobs:
     steps:
       - checkout
 
-      # TODO Remove after solving dependencies
-      - run: mvn clean install -U
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -40,14 +37,11 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
       
+      # TODO Remove after solving dependencies
+      - run: mvn clean install -U
+
       # TODO
       - run: mvn package
       
           # run tests!
       # - run: mvn integration-test
-
-      # - store_test_results:
-      #     path: target/surefire-reports
-      
-      # - store_artifacts:
-      #     path: target/demo-java-spring-0.0.1-SNAPSHOT.jar
